@@ -1,0 +1,226 @@
+<% layout("layouts/boilerplate.ejs") %>
+<body>
+
+<section class="signup-page">
+
+    <div class="signup-card">
+
+        <h2 class="signup-title">
+            Create Account
+        </h2>
+
+
+        <% if (typeof error !== "undefined" && error) { %>
+
+    <div class="alert alert-danger" role="alert">
+        <%= error %>
+    </div>
+
+<% } %>
+
+        <form action="/SignUp" method="POST" >
+
+            <!-- Profile Picture -->
+
+            <div class="text-center mb-4">
+
+                <img src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_1280.png"
+                     alt="Profile Picture"
+                     class="profile-picture">
+
+                <div class="profile-upload">
+
+                    <label for="profilePic"
+                           class="form-label">
+
+                        Profile Picture
+
+                    </label>
+
+                    <input type="file"
+                           class="form-control"
+                           id="profilePic"
+                           name="profilePic"
+                           accept="image/*">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Name -->
+
+            <div class="mb-3">
+
+                <label for="name"
+                       class="form-label">
+
+                    Full Name
+
+                </label>
+
+                <input type="text"
+                       class="form-control"
+                       id="name"
+                       name="name"
+                       placeholder="Enter your full name"
+                       required>
+
+            </div>
+
+
+
+            <!-- Email -->
+
+            <div class="mb-3">
+
+                <label for="email"
+                       class="form-label">
+
+                    Email Address
+
+                </label>
+
+                <input type="email"
+                       class="form-control"
+                       id="email"
+                       name="email"
+                       placeholder="Enter your email"
+                       required>
+
+            </div>
+
+
+
+            <!-- Username -->
+
+            <div class="mb-3">
+
+                <label for="username"
+                       class="form-label">
+
+                    Username
+
+                </label>
+
+                <input type="text"
+                       class="form-control"
+                       id="username"
+                       name="username"
+                       placeholder="Choose a username"
+                       required>
+
+            </div>
+
+
+
+            <!-- Password -->
+
+            <div class="mb-3">
+
+                <label for="password"
+                       class="form-label">
+
+                    Password
+
+                </label>
+
+                <input type="password"
+                       class="form-control"
+                       id="password"
+                       name="password"
+                       placeholder="Enter your password"
+                       required>
+
+            </div>
+
+
+
+            <!-- Confirm Password -->
+
+            <div class="mb-3" >
+
+                <label for="confirmPassword"
+                       class="form-label">
+
+                    Confirm Password
+
+                </label>
+
+                <input type="password"
+                       class="form-control"
+                       id="confirmPassword"
+                       name="confirmPassword"
+                       placeholder="Confirm your password"
+                       required>
+
+            </div>
+
+
+
+            <!-- Terms and Conditions -->
+
+            <div class="form-check mb-3">
+
+                <input class="form-check-input"
+                       type="checkbox"
+                       id="terms"
+                       required>
+
+                <label class="form-check-label"
+                       for="terms">
+
+                    I agree to the Terms & Conditions
+
+                </label>
+
+            </div>
+
+
+
+            <!-- Sign Up Button -->
+
+            <button type="submit"
+                    class="btn btn-gradient signup-btn">
+
+                Sign Up
+
+            </button>
+
+
+
+            <!-- Login -->
+
+            <div class="signup-login-link">
+
+                Already have an account?
+
+                <a href="login">
+                    Login
+                </a>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+<!-- Bootstrap JavaScript -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+<script src="script.js"></script>
+
+
+</body>
+
+
+
+        <!-- Validation Message -->
+

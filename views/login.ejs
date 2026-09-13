@@ -1,0 +1,39 @@
+<% layout("layouts/boilerplate.ejs") %>
+<body>
+<div class="login-card"> 
+  <!-- Brand --> 
+   <div class="brand"> 
+    SwapSkills </div> 
+    <!-- Heading --> 
+     <h2 class="login-title">Welcome Back!</h2> 
+     <p class="login-subtitle"> Login to continue to your account </p>
+    <!-- Server-side validation message --> 
+    <% if (typeof error !== "undefined" && error) { %> 
+    <div class="alert alert-danger" role="alert">
+    <%= error %> </div> <% } %> 
+    <!-- Login Form --> 
+     <form action="/login" method="POST" id="loginForm"> 
+      <!-- Username / Email --> 
+       <div class="mb-3"> 
+        <label for="username" class="form-label"> Username or Email </label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username or email" required> 
+        <div id="usernameError" class="text-danger mt-1">
+
+        </div> </div> <!-- Password --> <div class="mb-3"> 
+          <label for="password" class="form-label"> Password </label> 
+          <div class="password-wrapper"> 
+          <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required> 
+          <button type="button" class="password-toggle" id="togglePassword"> 👁 </button> 
+        </div> <div id="passwordError" class="text-danger mt-1"></div> </div> 
+        <!-- Remember Me / Forgot Password --> 
+         <div class="d-flex justify-content-between align-items-center mb-4"> 
+        <div class="form-check"> 
+        <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe"> 
+        <label class="form-check-label" for="rememberMe"> Remember me </label> 
+      </div> <a href="/forgot-password" class="forgot-password"> Forgot Password? </a> </div>
+       <!-- Login Button --> 
+        <button type="submit" class="login-btn"> Login </button> 
+      </form> <!-- Signup --> <div class="signup-link"> Don't have an account? <a href="/SignUp"> Create Account </a> 
+      </div> 
+    </div>
+</body>

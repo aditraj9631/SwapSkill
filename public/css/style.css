@@ -1,0 +1,416 @@
+body {
+  /* background-color: #f5f7ff; */
+
+  background: radial-gradient(circle at 45% 25%, #61BEEA 0%, transparent 35%),
+              linear-gradient(135deg, #101820 0%, #164A70 45%, #2E7DA8 100%); 
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar{
+    width: 100%;
+    margin:auto;
+    height: 6rem;
+    /* background: linear-gradient(90deg, #7b2ff7, #f107a3); */
+    /* background: #e3f2fd;  */
+    /* border-left: 1px solid #f5f7ff;
+    border-right:1px solid #f5f7ff ;
+    border-bottom:1px solid #f5f7ff ; */
+    /* box-shadow: slateblue; */
+    border-bottom:0.5px solid black ;
+}
+
+.hero-section {
+  padding: 80px 20px 40px;
+}
+
+.hero-section h1 {
+  font-weight: 700;
+  color: #4b00ff;
+}
+
+.hero-section p {
+  color: #555;
+  font-size: 18px;
+}
+
+.search-bar {
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.popular-skills .btn {
+  margin: 5px;
+  border-radius: 20px;
+}
+
+.featured-section {
+  margin-top: 50px;
+}
+
+.card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-title {
+  font-weight: 600;
+  color: #4b00ff;
+}
+
+.btn-gradient {
+  background: linear-gradient(90deg, #7b2ff7, #f107a3);
+  color: white;
+  border: none;
+  border-radius: 25px;
+}
+
+.btn-gradient:hover {
+  opacity: 0.9;
+}
+
+
+/*  */
+/* =================================================
+   SIGNUP PAGE
+   ================================================= */
+
+/* Signup container */
+
+.signup-page {
+    min-height: calc(100vh - 6rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 15px;
+}
+
+
+/* Signup card */
+
+.signup-card {
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 35px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Signup heading */
+
+.signup-title {
+    text-align: center;
+    font-weight: 700;
+    color: #4b00ff;
+    margin-bottom: 25px;
+}
+
+
+/* Form labels */
+
+.signup-card .form-label {
+    font-weight: 500;
+    color: #333;
+}
+
+
+/* Form inputs */
+
+.signup-card .form-control {
+    border-radius: 8px;
+    padding: 11px 14px;
+    border: 1px solid #ddd;
+}
+
+.signup-card .form-control:focus {
+    border-color: #7b2ff7;
+    box-shadow: 0 0 0 0.2rem rgba(123, 47, 247, 0.15);
+}
+
+
+/* Profile picture */
+
+.profile-picture {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #7b2ff7;
+    margin-bottom: 15px;
+}
+
+
+/* Profile picture upload */
+
+.profile-upload {
+    max-width: 100%;
+    margin: auto;
+}
+
+
+/* Signup button */
+
+.signup-btn {
+    width: 100%;
+    padding: 11px;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+
+/* Login link */
+
+.signup-login-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.signup-login-link a {
+    color: #7b2ff7;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.signup-login-link a:hover {
+    color: #f107a3;
+}
+
+
+/* Mobile responsive */
+
+@media (max-width: 576px) {
+
+    .signup-card {
+        padding: 25px 20px;
+    }
+
+    .signup-page {
+        padding: 25px 10px;
+    }
+
+}
+
+
+/* =================================================
+   LOGIN PAGE
+   ================================================= */
+
+/* Login container */
+
+.login-page {
+    min-height: calc(100vh - 6rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 15px;
+}
+
+
+/* Login card */
+
+.login-card {
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 35px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Login heading */
+
+.login-title {
+    text-align: center;
+    font-weight: 700;
+    color: #4b00ff;
+    margin-bottom: 8px;
+}
+
+
+/* Login subtitle */
+
+.login-subtitle {
+    text-align: center;
+    color: #555;
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+
+
+/* Form labels */
+
+.login-card .form-label {
+    font-weight: 500;
+    color: #333;
+}
+
+
+/* Form inputs */
+
+.login-card .form-control {
+    border-radius: 8px;
+    padding: 11px 14px;
+    border: 1px solid #ddd;
+}
+
+
+/* Input focus */
+
+.login-card .form-control:focus {
+    border-color: #7b2ff7;
+    box-shadow: 0 0 0 0.2rem rgba(123, 47, 247, 0.15);
+}
+
+
+/* Password wrapper */
+
+.password-wrapper {
+    position: relative;
+}
+
+
+/* Password input */
+
+.password-wrapper .form-control {
+    padding-right: 45px;
+}
+
+
+/* Show / Hide password button */
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: #7b2ff7;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+}
+
+
+/* Remove outline when clicked */
+
+.password-toggle:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+
+/* Remember me */
+
+.login-card .form-check-label {
+    color: #555;
+    font-size: 14px;
+}
+
+
+/* Remember me checkbox */
+
+.login-card .form-check-input:checked {
+    background-color: #7b2ff7;
+    border-color: #7b2ff7;
+}
+
+
+/* Forgot password */
+
+.forgot-password {
+    color: #7b2ff7;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+
+.forgot-password:hover {
+    color: #f107a3;
+}
+
+
+/* Login button */
+
+.login-btn {
+    width: 100%;
+    padding: 11px;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+
+/* Login validation messages */
+
+.login-card .text-danger {
+    font-size: 13px;
+}
+
+
+/* Bootstrap invalid input */
+
+.login-card .form-control.is-invalid {
+    border-color: #dc3545;
+}
+
+
+.login-card .form-control.is-invalid:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.15);
+}
+
+
+/* Server-side error alert */
+
+.login-card .alert {
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+
+/* Signup link */
+
+.login-signup-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #555;
+}
+
+
+.login-signup-link a {
+    color: #7b2ff7;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+.login-signup-link a:hover {
+    color: #f107a3;
+}
+
+
+/* Mobile responsive */
+
+@media (max-width: 576px) {
+
+    .login-card {
+        padding: 25px 20px;
+    }
+
+    .login-page {
+        padding: 25px 10px;
+    }
+
+}
