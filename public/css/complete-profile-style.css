@@ -1,0 +1,360 @@
+/* =========================================
+   ADD SKILL PAGE
+   Uses existing SwapSkills colour palette
+   ========================================= */
+body{
+    background: radial-gradient(circle at 45% 25%, #61BEEA 0%, transparent 35%),
+              linear-gradient(135deg, #101820 0%, #164A70 45%, #2E7DA8 100%);
+}
+
+.skill-page {
+    min-height: calc(100vh - 6rem);
+    padding: 20px 0 50px;
+}
+
+
+/* =========================================
+   SKILL CARD
+   ========================================= */
+
+.skill-card {
+    background: rgba(16, 24, 32, 0.78);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(97, 190, 234, 0.25);
+    border-radius: 24px;
+
+    padding: 40px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.30);
+
+    color: white;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.skill-header {
+    margin-bottom: 35px;
+}
+
+.skill-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
+.skill-header p {
+    color: rgba(255, 255, 255, 0.70);
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   ICON
+   ========================================= */
+
+.skill-icon {
+    width: 65px;
+    height: 65px;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: linear-gradient(
+        135deg,
+        #7b2ff7,
+        #f107a3
+    );
+
+    box-shadow:
+        0 10px 25px rgba(123, 47, 247, 0.35);
+}
+
+.skill-icon i {
+    font-size: 30px;
+    color: white;
+}
+
+
+/* =========================================
+   FORM LABEL
+   ========================================= */
+
+.skill-card .form-label {
+    color: white;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+
+/* =========================================
+   FORM INPUT
+   Scoped so existing Bootstrap styles remain
+   unchanged on other pages.
+   ========================================= */
+
+.skill-card .form-control,
+.skill-card .form-select {
+    min-height: 50px;
+
+    background-color: rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    border-radius: 12px;
+
+    padding: 12px 15px;
+
+    transition: all 0.25s ease;
+}
+
+
+/* Placeholder */
+
+.skill-card .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+
+/* Focus */
+
+.skill-card .form-control:focus,
+.skill-card .form-select:focus {
+
+    background-color: rgba(255, 255, 255, 0.12);
+
+    color: white;
+
+    border-color: #61BEEA;
+
+    box-shadow:
+        0 0 0 3px rgba(97, 190, 234, 0.15);
+
+    outline: none;
+}
+
+
+/* Select options */
+
+.skill-card .form-select option {
+    background-color: #101820;
+    color: white;
+}
+
+
+/* =========================================
+   FORM TEXT
+   ========================================= */
+
+.skill-card .form-text {
+    color: rgba(255, 255, 255, 0.50);
+    font-size: 0.82rem;
+    margin-top: 7px;
+}
+
+
+/* =========================================
+   INPUT GROUP
+   ========================================= */
+
+.skill-card .input-group-text {
+    background-color: rgba(255, 255, 255, 0.10);
+
+    color: rgba(255, 255, 255, 0.80);
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    border-left: none;
+
+    border-radius: 0 12px 12px 0;
+}
+
+.skill-card .input-group .form-control {
+    border-radius: 12px 0 0 12px;
+}
+
+
+/* =========================================
+   TEACH / LEARN OPTIONS
+   ========================================= */
+
+.skill-type-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+
+.skill-type-option {
+    position: relative;
+    cursor: pointer;
+}
+
+
+.skill-type-option input {
+    position: absolute;
+    opacity: 0;
+}
+
+
+.skill-type-content {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    min-height: 75px;
+
+    padding: 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    transition: all 0.25s ease;
+}
+
+
+.skill-type-content i {
+    font-size: 25px;
+
+    color: #61BEEA;
+}
+
+
+.skill-type-content strong {
+    display: block;
+    color: white;
+    font-size: 1rem;
+}
+
+
+.skill-type-content small {
+    display: block;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    margin-top: 3px;
+}
+
+
+/* Hover */
+
+.skill-type-option:hover .skill-type-content {
+    border-color: #61BEEA;
+
+    background: rgba(97, 190, 234, 0.08);
+}
+
+
+/* Selected */
+
+.skill-type-option input:checked + .skill-type-content {
+    border-color: #7b2ff7;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(123, 47, 247, 0.20),
+            rgba(241, 7, 163, 0.12)
+        );
+
+    box-shadow:
+        0 0 0 2px rgba(123, 47, 247, 0.15);
+}
+
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+.skill-form-buttons {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 35px;
+
+    gap: 15px;
+}
+
+
+.skill-form-buttons .btn {
+    min-height: 48px;
+
+    padding: 10px 22px;
+
+    border-radius: 25px;
+
+    font-weight: 500;
+}
+
+
+/* Reuse your existing btn-gradient */
+
+.skill-form-buttons .btn-gradient {
+    padding-left: 28px;
+    padding-right: 28px;
+    color: white;
+}
+
+
+
+/* =========================================
+   ALERT
+   ========================================= */
+
+.skill-card .alert {
+    border-radius: 12px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 576px) {
+
+    .skill-page {
+        padding: 10px 0 30px;
+    }
+
+    .skill-card {
+        padding: 25px 20px;
+
+        border-radius: 18px;
+    }
+
+    .skill-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .skill-type-container {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-form-buttons {
+        flex-direction: column-reverse;
+    }
+
+    .skill-form-buttons .btn {
+        width: 100%;
+    }
+}

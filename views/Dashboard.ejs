@@ -1,11 +1,987 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SwapSkills</title>
-</head>
-<body>
-    
-</body>
-</html>
+<% layout("layouts/boilerplate.ejs") %>
+
+<!--
+    =====================================================
+    SWAPSKILLS DASHBOARD
+    Top Navbar:
+        Comes from boilerplate.ejs
+
+    This page contains:
+        1. Left Sidebar
+        2. Dashboard Content
+        3. Matches
+        4. Upcoming Sessions
+        5. Calendar
+        6. Schedule Session button
+    =====================================================
+-->
+
+<div class="dashboard-page">
+
+    <!-- =================================================
+         LEFT SIDEBAR
+         ================================================= -->
+
+    <aside class="dashboard-sidebar">
+
+        <div class="sidebar-menu">
+
+            <!-- Dashboard -->
+            <a href="/dashboard"
+               class="sidebar-link active">
+
+                <i class="bi bi-grid-1x2-fill"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <!-- Matches -->
+            <a href="/matches"
+               class="sidebar-link">
+
+                <i class="bi bi-people-fill"></i>
+
+                <span>Matches</span>
+
+                <span class="sidebar-badge">
+                    5
+                </span>
+
+            </a>
+
+
+            <!-- Chat -->
+            <a href="/chat"
+               class="sidebar-link">
+
+                <i class="bi bi-chat-dots-fill"></i>
+
+                <span>Chat</span>
+
+                <span class="sidebar-badge">
+                    2
+                </span>
+
+            </a>
+
+
+            <!-- Calendar -->
+            <a href="/calender"
+               class="sidebar-link">
+
+                <i class="bi bi-calendar3"></i>
+
+                <span>Calendar</span>
+
+            </a>
+
+        </div>
+
+
+        <!-- Sidebar bottom -->
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-help">
+
+                <i class="bi bi-lightbulb"></i>
+
+                <div>
+                    <strong>Keep learning!</strong>
+
+                    <p>
+                        Find someone who can teach you.
+                    </p>
+                </div>
+
+            </div>
+
+            <a href="/matches"
+               class="btn btn-gradient sidebar-find-btn">
+
+                Find Skills
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =================================================
+         MAIN DASHBOARD
+         ================================================= -->
+
+    <main class="dashboard-main">
+
+        <div class="container-fluid dashboard-container">
+
+
+            <!-- =================================================
+                 HEADER
+                 ================================================= -->
+
+            <div class="dashboard-header">
+
+                <div>
+
+                    <h1>
+                        Welcome back, <%= user.name %> 👋
+                    </h1>
+
+                    <p>
+                        Here's what's happening with your skills today.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="btn btn-gradient schedule-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#scheduleModal">
+
+                    <i class="bi bi-plus-lg"></i>
+
+                    Schedule Session
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 STATISTICS
+                 ================================================= -->
+
+            <div class="row g-4 dashboard-stats">
+
+
+                <!-- Matches -->
+
+                <div class="col-sm-6 col-xl-3">
+
+                    <div class="dashboard-stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon purple">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+
+                            <span class="stat-change">
+                                +3
+                            </span>
+
+                        </div>
+
+                        <h2>
+                            12
+                        </h2>
+
+                        <p>
+                            Total Matches
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Sessions -->
+
+                <div class="col-sm-6 col-xl-3">
+
+                    <div class="dashboard-stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon blue">
+                                <i class="bi bi-calendar-check"></i>
+                            </div>
+
+                            <span class="stat-change">
+                                +2
+                            </span>
+
+                        </div>
+
+                        <h2>
+                            8
+                        </h2>
+
+                        <p>
+                            Completed Sessions
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Skills -->
+
+                <div class="col-sm-6 col-xl-3">
+
+                    <div class="dashboard-stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon pink">
+                                <i class="bi bi-lightbulb-fill"></i>
+                            </div>
+
+                        </div>
+
+                        <h2>
+                            6
+                        </h2>
+
+                        <p>
+                            My Skills
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Rating -->
+
+                <div class="col-sm-6 col-xl-3">
+
+                    <div class="dashboard-stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon yellow">
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+
+                        </div>
+
+                        <h2>
+                            4.8
+                        </h2>
+
+                        <p>
+                            Average Rating
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MAIN CONTENT
+                 ================================================= -->
+
+            <div class="row g-4 mt-1">
+
+
+                <!-- =================================================
+                     LEFT COLUMN
+                     ================================================= -->
+
+                <div class="col-lg-8">
+
+
+                    <!-- =================================================
+                         RECOMMENDED MATCHES
+                         ================================================= -->
+
+                    <div class="dashboard-card matches-card">
+
+                        <div class="dashboard-card-header">
+
+                            <div>
+
+                                <h5>
+                                    Recommended Matches
+                                </h5>
+
+                                <p>
+                                    People whose skills match your interests
+                                </p>
+
+                            </div>
+
+                            <a href="/matches">
+                                View all
+                            </a>
+
+                        </div>
+
+
+                        <div class="matches-list">
+
+
+                            <!-- Match 1 -->
+
+                            <div class="match-row">
+
+                                <img
+                                    src="https://i.pravatar.cc/100?img=12"
+                                    class="match-avatar"
+                                    alt="Rahul Kumar"
+                                >
+
+                                <div class="match-info">
+
+                                    <h6>
+                                        Rahul Kumar
+                                    </h6>
+
+                                    <p>
+                                        Can teach
+                                        <strong>Python</strong>
+                                    </p>
+
+                                    <div class="match-tags">
+
+                                        <span>
+                                            Python
+                                        </span>
+
+                                        <span>
+                                            Django
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="match-percentage">
+
+                                    <strong>
+                                        92%
+                                    </strong>
+
+                                    <small>
+                                        Match
+                                    </small>
+
+                                </div>
+
+                                <a
+                                    href="/matches"
+                                    class="btn match-btn">
+
+                                    Connect
+
+                                </a>
+
+                            </div>
+
+
+
+                            <!-- Match 2 -->
+
+                            <div class="match-row">
+
+                                <img
+                                    src="https://i.pravatar.cc/100?img=32"
+                                    class="match-avatar"
+                                    alt="Priya Sharma"
+                                >
+
+                                <div class="match-info">
+
+                                    <h6>
+                                        Priya Sharma
+                                    </h6>
+
+                                    <p>
+                                        Can teach
+                                        <strong>UI/UX Design</strong>
+                                    </p>
+
+                                    <div class="match-tags">
+
+                                        <span>
+                                            Figma
+                                        </span>
+
+                                        <span>
+                                            UI/UX
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="match-percentage">
+
+                                    <strong>
+                                        87%
+                                    </strong>
+
+                                    <small>
+                                        Match
+                                    </small>
+
+                                </div>
+
+                                <a
+                                    href="/matches"
+                                    class="btn match-btn">
+
+                                    Connect
+
+                                </a>
+
+                            </div>
+
+
+
+                            <!-- Match 3 -->
+
+                            <div class="match-row">
+
+                                <img
+                                    src="https://i.pravatar.cc/100?img=49"
+                                    class="match-avatar"
+                                    alt="Aman Singh"
+                                >
+
+                                <div class="match-info">
+
+                                    <h6>
+                                        Aman Singh
+                                    </h6>
+
+                                    <p>
+                                        Can teach
+                                        <strong>React.js</strong>
+                                    </p>
+
+                                    <div class="match-tags">
+
+                                        <span>
+                                            React
+                                        </span>
+
+                                        <span>
+                                            JavaScript
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="match-percentage">
+
+                                    <strong>
+                                        81%
+                                    </strong>
+
+                                    <small>
+                                        Match
+                                    </small>
+
+                                </div>
+
+                                <a
+                                    href="/matches"
+                                    class="btn match-btn">
+
+                                    Connect
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         UPCOMING SESSIONS
+                         ================================================= -->
+
+                    <div class="dashboard-card upcoming-card">
+
+                        <div class="dashboard-card-header">
+
+                            <div>
+
+                                <h5>
+                                    Upcoming Sessions
+                                </h5>
+
+                                <p>
+                                    Your next learning sessions
+                                </p>
+
+                            </div>
+
+                            <a href="/calender">
+                                View calendar
+                            </a>
+
+                        </div>
+
+
+                        <div class="session-list">
+
+
+                            <!-- Session 1 -->
+
+                            <div class="session-row">
+
+                                <div class="session-date">
+
+                                    <span>
+                                        SEP
+                                    </span>
+
+                                    <strong>
+                                        15
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="session-info">
+
+                                    <h6>
+                                        Python Basics
+                                    </h6>
+
+                                    <p>
+                                        With Rahul Kumar
+                                    </p>
+
+                                    <small>
+                                        <i class="bi bi-clock"></i>
+                                        10:00 AM - 11:00 AM
+                                    </small>
+
+                                </div>
+
+
+                                <span class="session-status upcoming">
+                                    Upcoming
+                                </span>
+
+                            </div>
+
+
+
+                            <!-- Session 2 -->
+
+                            <div class="session-row">
+
+                                <div class="session-date">
+
+                                    <span>
+                                        SEP
+                                    </span>
+
+                                    <strong>
+                                        18
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="session-info">
+
+                                    <h6>
+                                        UI/UX Introduction
+                                    </h6>
+
+                                    <p>
+                                        With Priya Sharma
+                                    </p>
+
+                                    <small>
+                                        <i class="bi bi-clock"></i>
+                                        04:00 PM - 05:00 PM
+                                    </small>
+
+                                </div>
+
+
+                                <span class="session-status pending">
+                                    Pending
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     RIGHT COLUMN
+                     ================================================= -->
+
+                <div class="col-lg-4">
+
+
+                    <!-- =================================================
+                         QUICK CALENDAR
+                         ================================================= -->
+
+                    <div class="dashboard-card calendar-card">
+
+                        <div class="dashboard-card-header">
+
+                            <div>
+
+                                <h5>
+                                    Calendar
+                                </h5>
+
+                                <p>
+                                    September 2026
+                                </p>
+
+                            </div>
+
+                            <a href="/calender">
+                                <i class="bi bi-arrow-up-right"></i>
+                            </a>
+
+                        </div>
+
+
+                        <div class="calendar-week">
+
+                            <span>Su</span>
+                            <span>Mo</span>
+                            <span>Tu</span>
+                            <span>We</span>
+                            <span>Th</span>
+                            <span>Fr</span>
+                            <span>Sa</span>
+
+                        </div>
+
+
+                        <div class="calendar-days">
+
+                            <span class="muted">30</span>
+                            <span class="muted">31</span>
+
+                            <span>1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+
+                            <span>6</span>
+                            <span>7</span>
+                            <span>8</span>
+                            <span>9</span>
+                            <span>10</span>
+                            <span>11</span>
+                            <span>12</span>
+
+                            <span class="today">13</span>
+                            <span>14</span>
+                            <span class="event">15</span>
+                            <span>16</span>
+                            <span>17</span>
+                            <span class="event">18</span>
+                            <span>19</span>
+
+                            <span>20</span>
+                            <span>21</span>
+                            <span>22</span>
+                            <span>23</span>
+                            <span>24</span>
+                            <span>25</span>
+                            <span>26</span>
+
+                            <span>27</span>
+                            <span>28</span>
+                            <span>29</span>
+                            <span>30</span>
+
+                            <span class="muted">1</span>
+                            <span class="muted">2</span>
+                            <span class="muted">3</span>
+
+                        </div>
+
+
+                        <a
+                            href="/calender"
+                            class="btn btn-gradient calendar-button">
+
+                            Open Calendar
+
+                        </a>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         SCHEDULE SESSION
+                         ================================================= -->
+
+                    <div class="schedule-card">
+
+                        <div class="schedule-icon">
+
+                            <i class="bi bi-calendar-plus"></i>
+
+                        </div>
+
+                        <h5>
+                            Schedule a Session
+                        </h5>
+
+                        <p>
+                            Connect with your matches and
+                            schedule a time to learn or teach.
+                        </p>
+
+                        <button
+                            class="btn btn-gradient w-100"
+                            data-bs-toggle="modal"
+                            data-bs-target="#scheduleModal">
+
+                            Schedule Session
+
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         SKILLS SUMMARY
+                         ================================================= -->
+
+                    <div class="dashboard-card skills-summary">
+
+                        <div class="dashboard-card-header">
+
+                            <h5>
+                                My Skills
+                            </h5>
+
+                            <a href="/profile">
+                                Manage
+                            </a>
+
+                        </div>
+
+
+                        <div class="skill-summary-item">
+
+                            <div>
+                                <strong>
+                                    Web Development
+                                </strong>
+
+                                <small>
+                                    Teaching
+                                </small>
+                            </div>
+
+                            <span class="advanced">
+                                Advanced
+                            </span>
+
+                        </div>
+
+
+                        <div class="skill-summary-item">
+
+                            <div>
+                                <strong>
+                                    JavaScript
+                                </strong>
+
+                                <small>
+                                    Teaching
+                                </small>
+                            </div>
+
+                            <span class="intermediate">
+                                Intermediate
+                            </span>
+
+                        </div>
+
+
+                        <div class="skill-summary-item">
+
+                            <div>
+                                <strong>
+                                    Python
+                                </strong>
+
+                                <small>
+                                    Learning
+                                </small>
+                            </div>
+
+                            <span class="beginner">
+                                Beginner
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<!-- =================================================
+     SCHEDULE SESSION MODAL
+     ================================================= -->
+
+<div
+    class="modal fade"
+    id="scheduleModal"
+    tabindex="-1"
+    aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content schedule-modal">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Schedule a Session
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <form id="scheduleForm">
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Select Match
+                        </label>
+
+                        <select
+                            class="form-select"
+                            required>
+
+                            <option value="">
+                                Choose a person
+                            </option>
+
+                            <option>
+                                Rahul Kumar - Python
+                            </option>
+
+                            <option>
+                                Priya Sharma - UI/UX
+                            </option>
+
+                            <option>
+                                Aman Singh - React
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Date
+                            </label>
+
+                            <input
+                                type="date"
+                                class="form-control"
+                                required>
+
+                        </div>
+
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Time
+                            </label>
+
+                            <input
+                                type="time"
+                                class="form-control"
+                                required>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Session Topic
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="e.g. Python Basics"
+                            required>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-gradient w-100">
+
+                        Schedule Session
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

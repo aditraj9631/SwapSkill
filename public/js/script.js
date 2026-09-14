@@ -18,3 +18,21 @@ form.addEventListener("submit", function (event) {
     }
 
 });
+
+
+// Dashboard
+ 
+/* ========================================================= CLOSE MOBILE SIDEBAR AFTER CLICK ========================================================= */
+const sidebarLinks = document.querySelectorAll( ".dashboard-sidebar .sidebar-link" ); 
+sidebarLinks.forEach(link => { 
+    link.addEventListener("click", function () { 
+        const sidebar = document.querySelector( ".dashboard-sidebar" );
+        if ( window.innerWidth <= 767 && sidebar ) { 
+            sidebar.classList.remove("show"); } }); });
+/* ========================================================= ACTIVE SIDEBAR ITEM ========================================================= */ 
+const currentPath = window.location.pathname; 
+sidebarLinks.forEach(link => { const href = link.getAttribute("href"); 
+    if (href === currentPath) { 
+        sidebarLinks.forEach(item => { 
+            item.classList.remove("active"); }); 
+            link.classList.add("active"); } });
